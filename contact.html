@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | MediLab</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Animations CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0056b3',
+                        secondary: '#00a8cc',
+                        darkbg: '#0f172a',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- PREVENT FLASHING: Run this before body loads -->
+    <script>
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+</head>
+<body class="bg-gray-50 text-slate-800 dark:bg-darkbg dark:text-slate-200 transition-colors duration-300 font-sans flex flex-col min-h-screen">
+
+    <!-- Navbar -->
+    <nav class="sticky top-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-gray-100 dark:border-slate-800 transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <a href="index.html" class="text-2xl font-bold text-primary dark:text-secondary flex items-center gap-2">
+                    Medi<span class="text-secondary dark:text-white">Lab</span>
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="hover:text-primary dark:hover:text-secondary transition font-medium">Home</a>
+                    <a href="about.html" class="hover:text-primary dark:hover:text-secondary transition font-medium">About Us</a>
+                    <a href="contact.html" class="text-secondary font-medium">Contact</a>
+                    
+                    <!-- Desktop Theme Toggle -->
+                    <button class="theme-toggle p-2 rounded-full hover:bg-gray-100 dark:hover:bg-slate-800 transition focus:outline-none">
+                        <!-- Moon Icon (Default) -->
+                        <svg class="theme-moon w-6 h-6 text-slate-600 dark:text-slate-400" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                        <!-- Sun Icon (Hidden by default) -->
+                        <svg class="theme-sun w-6 h-6 text-yellow-400 hidden" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path></svg>
+                    </button>
+
+                    <a href="contact.html" class="bg-primary hover:bg-secondary text-white px-6 py-2.5 rounded-full font-semibold transition shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">Book Appointment</a>
+                </div>
+
+                <!-- Mobile Menu & Toggles -->
+                <div class="md:hidden flex items-center gap-4">
+                    <!-- Mobile Theme Toggle -->
+                    <button class="theme-toggle p-2 rounded-full hover:bg-gray-100 dark:hover:bg-slate-800 transition focus:outline-none">
+                        <!-- Moon -->
+                        <svg class="theme-moon w-6 h-6 text-slate-600 dark:text-slate-400" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                        <!-- Sun -->
+                        <svg class="theme-sun w-6 h-6 text-yellow-400 hidden" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path></svg>
+                    </button>
+                    
+                    <!-- Hamburger Icon -->
+                    <button id="mobile-menu-btn" class="text-2xl text-slate-700 dark:text-white">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-slate-900 border-t border-gray-100 dark:border-slate-800 absolute w-full left-0 shadow-xl">
+             <div class="px-4 pt-4 pb-6 space-y-2 flex flex-col items-center">
+                <a href="index.html" class="block w-full text-center py-3 font-medium text-slate-700 dark:text-slate-200">Home</a>
+                <a href="about.html" class="block w-full text-center py-3 font-medium text-slate-700 dark:text-slate-200">About Us</a>
+                <a href="contact.html" class="block w-full text-center py-3 text-secondary font-bold bg-gray-50 dark:bg-slate-800 rounded-lg">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow py-12 md:py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="text-3xl md:text-5xl font-bold text-primary dark:text-secondary mb-4 transition-colors">Get in Touch</h2>
+                <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">Visit us for a diagnostic test or send us a message. We are here to help you.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 rounded-3xl overflow-hidden shadow-2xl bg-white dark:bg-slate-900 transition-colors duration-300" data-aos="fade-up" data-aos-delay="200">
+                
+                <!-- Contact Info (Left Side) -->
+                <div class="bg-gradient-to-br from-primary to-blue-700 p-10 text-white lg:col-span-1 flex flex-col justify-between relative overflow-hidden">
+                    <!-- Decorative Circle -->
+                    <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-white/10 rounded-full blur-2xl"></div>
+                    
+                    <div>
+                        <h3 class="text-2xl font-bold mb-8">Contact Info</h3>
+                        
+                        <div class="space-y-8">
+                            <div class="flex items-start gap-4 group">
+                                <div class="w-10 h-10 rounded-lg bg-white/20 backdrop-blur-sm flex items-center justify-center text-xl group-hover:bg-white/30 transition">📍</div>
+                                <div>
+                                    <h4 class="font-bold text-sm uppercase tracking-wider mb-1 text-blue-100">Address</h4>
+                                    <p class="opacity-90 leading-snug">123 Medical Park Drive<br>Science City, SC 90210</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start gap-4 group">
+                                <div class="w-10 h-10 rounded-lg bg-white/20 backdrop-blur-sm flex items-center justify-center text-xl group-hover:bg-white/30 transition">📞</div>
+                                <div>
+                                    <h4 class="font-bold text-sm uppercase tracking-wider mb-1 text-blue-100">Phone</h4>
+                                    <p class="opacity-90">+1 (555) 123-4567</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4 group">
+                                <div class="w-10 h-10 rounded-lg bg-white/20 backdrop-blur-sm flex items-center justify-center text-xl group-hover:bg-white/30 transition">✉️</div>
+                                <div>
+                                    <h4 class="font-bold text-sm uppercase tracking-wider mb-1 text-blue-100">Email</h4>
+                                    <p class="opacity-90">help@medilab.com</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Social Links -->
+                    <div class="mt-10">
+                         <p class="text-sm text-blue-100 mb-3 font-semibold">Follow Us</p>
+                         <div class="flex gap-4">
+                             <a href="#" class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center hover:bg-white hover:text-primary transition">𝕏</a>
+                             <a href="#" class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center hover:bg-white hover:text-primary transition">f</a>
+                             <a href="#" class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center hover:bg-white hover:text-primary transition">in</a>
+                         </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form (Right Side) -->
+                <div class="p-8 md:p-12 lg:col-span-2">
+                    <form id="labForm" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <!-- Name -->
+                            <div>
+                                <label for="from_name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Full Name</label>
+                                <input type="text" name="from_name" id="name" required class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all placeholder-gray-400 dark:placeholder-gray-500" placeholder="John Doe">
+                            </div>
+                            <!-- Email -->
+                            <div>
+                                <label for="from_email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Email Address</label>
+                                <input type="email" name="from_email" id="email" required class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all placeholder-gray-400 dark:placeholder-gray-500" placeholder="john@example.com">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <!-- Phone -->
+                            <div>
+                                <label for="phone" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Phone Number</label>
+                                <input type="tel" name="phone" id="phone" class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all placeholder-gray-400 dark:placeholder-gray-500" placeholder="(555) 123-4567">
+                            </div>
+                            <!-- Service Type -->
+                            <div>
+                                <label for="test_type" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Type of Test</label>
+                                <select name="test_type" id="test-type" required class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all">
+                                    <option value="" disabled selected>Select a service...</option>
+                                    <option value="hematology">Hematology</option>
+                                    <option value="microbiology">Microbiology</option>
+                                    <option value="checkup">General Checkup</option>
+                                    <option value="other">Other Inquiry</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Message -->
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Message</label>
+                            <textarea name="message" id="message" rows="4" class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all resize-none placeholder-gray-400 dark:placeholder-gray-500" placeholder="Any specific requirements?"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full bg-primary hover:bg-secondary text-white font-bold py-4 rounded-xl transition-all duration-300 shadow-lg shadow-primary/30 transform hover:-translate-y-1 hover:shadow-xl">
+                            Send Request
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-white py-10 border-t border-slate-800 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h2 class="text-2xl font-bold mb-4 flex justify-center items-center gap-2">
+                Medi<span class="text-secondary">Lab</span>
+            </h2>
+            <div class="flex justify-center gap-6 mb-6 text-sm text-slate-400">
+                <a href="#" class="hover:text-white transition">Privacy Policy</a>
+                <a href="#" class="hover:text-white transition">Terms of Service</a>
+                <a href="#" class="hover:text-white transition">Careers</a>
+            </div>
+            <p class="text-slate-500">&copy; 2023 MediLab Diagnostics. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Animations Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
