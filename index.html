@@ -3,15 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MediLab | Precision Diagnostics</title>
     
-    <!-- Google Fonts -->
+    <link rel="icon" type="image/png" href="./images/logo-dark-mode.png">
+
+    <title>Medcrux | Premium Diagnostics & Healthcare</title>
+    <meta name="description" content="Medcrux: Advanced Medical Lab, Blood Banking & Virtual Consultations in Lagos. Schedule a Virtual Consultation at Medcrux today.">
+    <meta name="keywords" content="Medical Laboratory Lagos, Diagnostics Ajah, Blood Bank Lekki, Home Medical Service Nigeria, Virtual Consultation Medcrux, Hematology">
+    <meta name="robots" content="index, follow">
+    
+    <!-- SCHEMA MARKUP (The strongest SEO signal) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MedicalBusiness",
+      "name": "Medcrux",
+      "image": "https://medcrux.com.ng/images/logo-dark-mode.png",
+      "telephone": "+2348065852838",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Lekki",
+        "addressRegion": "Lagos",
+        "addressCountry": "NG"
+      },
+      "priceRange": "$$"
+    }
+    </script>
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- AOS Animation CSS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -19,172 +38,251 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: '#0056b3',
-                        secondary: '#00a8cc',
-                        darkbg: '#0f172a',
+                        primary: '#0056b3', secondary: '#00a8cc', darkbg: '#020617',
                     },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    }
+                    fontFamily: { sans: ['Inter', 'sans-serif'] }
                 }
             }
         }
     </script>
-    <!-- Prevent Flash -->
     <script>
         if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark');
-        }
+        } else { document.documentElement.classList.remove('dark'); }
     </script>
+
+    <!-- Aurora Animation Styles -->
+    <style>
+        @keyframes blob {
+            0% { transform: translate(0px, 0px) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+            100% { transform: translate(0px, 0px) scale(1); }
+        }
+        .animate-blob { animation: blob 7s infinite; }
+        .animation-delay-2000 { animation-delay: 2s; }
+        .animation-delay-4000 { animation-delay: 4s; }
+    </style>
 </head>
-<body class="bg-white text-slate-800 dark:bg-darkbg dark:text-slate-200 transition-colors duration-300 font-sans overflow-x-hidden">
+<body class="bg-gray-50 text-slate-800 dark:bg-darkbg dark:text-slate-200 transition-colors duration-300 font-sans overflow-x-hidden relative">
 
-    <!-- Navigation -->
-    <nav class="sticky top-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-gray-100 dark:border-slate-800 transition-all">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <a href="index.html" class="text-2xl font-bold text-primary dark:text-secondary flex items-center gap-2">
-                    Medi<span class="text-secondary dark:text-white">Lab</span>
-                </a>
+    <!-- AURORA BACKGROUND -->
+    <div class="fixed inset-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
+        <div class="absolute top-0 left-1/4 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-[128px] opacity-20 dark:opacity-10 animate-blob"></div>
+        <div class="absolute top-0 right-1/4 w-96 h-96 bg-teal-400 rounded-full mix-blend-multiply filter blur-[128px] opacity-20 dark:opacity-10 animate-blob animation-delay-2000"></div>
+        <div class="absolute -bottom-32 left-1/3 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-[128px] opacity-20 dark:opacity-10 animate-blob animation-delay-4000"></div>
+    </div>
 
-                <!-- Desktop Menu -->
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="index.html" class="text-secondary font-medium">Home</a>
-                    <a href="about.html" class="hover:text-primary dark:hover:text-secondary transition-colors">About Us</a>
-                    <a href="contact.html" class="hover:text-primary dark:hover:text-secondary transition-colors">Contact</a>
+    <!-- FLOATING GLASS NAVBAR -->
+    <div class="fixed top-4 left-0 right-0 z-50 flex justify-center px-4">
+        <nav class="w-full max-w-7xl bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl border border-white/40 dark:border-slate-700 rounded-full shadow-lg transition-all">
+            <div class="px-6 md:px-8">
+                <div class="flex justify-between items-center h-20">
                     
-                    <!-- Theme Toggle -->
-                    <button class="theme-toggle p-2 rounded-full hover:bg-gray-100 dark:hover:bg-slate-800 transition focus:outline-none">
-                        <!-- Moon -->
-                        <svg class="theme-moon w-6 h-6 text-slate-600 dark:text-slate-400" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
-                        <!-- Sun -->
-                        <svg class="theme-sun w-6 h-6 text-yellow-400 hidden" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path></svg>
-                    </button>
-
-                    <a href="contact.html" class="bg-primary hover:bg-secondary text-white px-6 py-2.5 rounded-full font-semibold transition-all transform hover:scale-105 shadow-lg shadow-primary/30">
-                        Book Appointment
+                    <!-- Logo -->
+                    <a href="index.html" class="flex-shrink-0">
+                        <img src="./images/logo-light-mode.png" alt="Medcrux" class="h-14 w-auto block dark:hidden object-contain">
+                        <img src="./images/logo-dark-mode.png" alt="Medcrux" class="h-14 w-auto hidden dark:block object-contain">
                     </a>
-                </div>
 
-                <!-- Mobile Toggle -->
-                <div class="md:hidden flex items-center gap-4">
-                    <button class="theme-toggle p-2 rounded-full hover:bg-gray-100 dark:hover:bg-slate-800 transition focus:outline-none">
-                        <!-- Moon -->
-                        <svg class="theme-moon w-6 h-6 text-slate-600 dark:text-slate-400" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
-                        <!-- Sun -->
-                        <svg class="theme-sun w-6 h-6 text-yellow-400 hidden" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path></svg>
-                    </button>
-                    <button id="mobile-menu-btn" class="text-2xl focus:outline-none">☰</button>
+                    <!-- Desktop Menu -->
+                    <div class="hidden md:flex items-center space-x-6 lg:space-x-8">
+                        <a href="index.html" class="text-secondary font-bold text-sm lg:text-base">Home</a>
+                        <a href="about.html" class="hover:text-primary dark:hover:text-secondary transition font-medium text-sm lg:text-base">Services</a>
+                        <a href="contact.html" class="hover:text-primary dark:hover:text-secondary transition font-medium text-sm lg:text-base">Contact</a>
+                        
+                        <button class="theme-toggle p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition">
+                            <svg class="theme-moon w-5 h-5 text-slate-600 dark:text-slate-400" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                            <svg class="theme-sun w-5 h-5 text-yellow-400 hidden" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path></svg>
+                        </button>
+
+                        <a href="contact.html" class="bg-primary hover:bg-secondary text-white px-5 py-2.5 rounded-full font-bold transition-all shadow-lg hover:shadow-blue-500/30 text-sm lg:text-base">
+                            Book Now
+                        </a>
+                    </div>
+
+                    <!-- Mobile Toggle -->
+                    <div class="md:hidden flex items-center gap-3">
+                        <button class="theme-toggle p-2"><svg class="theme-moon w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg><svg class="theme-sun w-5 h-5 text-yellow-400 hidden" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"></path></svg></button>
+                        <button id="mobile-menu-btn" class="text-2xl text-primary dark:text-white">☰</button>
+                    </div>
                 </div>
             </div>
-        </div>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-slate-900 border-t dark:border-slate-800 absolute w-full left-0 shadow-xl">
-            <div class="px-4 pt-4 pb-6 space-y-2 flex flex-col items-center">
-                <a href="index.html" class="block w-full text-center py-3 text-secondary font-medium bg-gray-50 dark:bg-slate-800 rounded">Home</a>
-                <a href="about.html" class="block w-full text-center py-3 hover:text-primary">About Us</a>
-                <a href="contact.html" class="block w-full text-center py-3 hover:text-primary">Contact</a>
+            
+            <div id="mobile-menu" class="hidden md:hidden absolute top-24 left-0 w-full bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 rounded-2xl shadow-xl p-4 flex flex-col items-center space-y-3">
+                <a href="index.html" class="block w-full text-center py-2 font-bold text-primary">Home</a>
+                <a href="about.html" class="block w-full text-center py-2 hover:text-secondary">Services</a>
+                <a href="contact.html" class="block w-full text-center py-2 hover:text-secondary">Contact</a>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </div>
+
+    <!-- Padding for Fixed Nav -->
+    <div class="h-28"></div>
 
     <!-- Hero Section -->
-    <section class="relative min-h-[90vh] flex items-center justify-center text-center overflow-hidden">
-        <div class="absolute inset-0 z-0">
-            <div class="absolute inset-0 bg-gradient-to-r from-blue-900/90 to-teal-800/80 z-10"></div>
-            <!-- Main Hero Image -->
-            <img src="https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&q=80&w=1920" 
-                 class="w-full h-full object-cover" alt="Lab Background">
-        </div>
-        
-        <div class="relative z-20 px-4 max-w-5xl mx-auto text-white">
-            <span class="inline-block py-1 px-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-sm font-medium mb-6" data-aos="fade-down">
-                Results in 24 Hours
-            </span>
-            <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight tracking-tight" data-aos="fade-up" data-aos-delay="100">
+    <section class="relative min-h-[85vh] flex items-center justify-center text-center overflow-hidden">
+        <div class="relative z-20 px-4 max-w-5xl mx-auto">
+            <div data-aos="fade-down" class="inline-flex items-center gap-2 bg-blue-50/50 dark:bg-slate-800/50 backdrop-blur-md border border-blue-100 dark:border-slate-700 px-4 py-2 rounded-full mb-8 shadow-sm">
+                <span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+                <span class="text-sm font-semibold tracking-wide text-slate-700 dark:text-blue-100">Serving Ajah & Lekki</span>
+            </div>
+            
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight text-slate-900 dark:text-white" data-aos="fade-up" data-aos-delay="100">
                 Precision Diagnostics <br> 
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-200 to-teal-200">You Can Trust</span>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">You Can Trust</span>
             </h1>
-            <p class="text-lg md:text-xl mb-10 text-gray-100 max-w-2xl mx-auto leading-relaxed" data-aos="fade-up" data-aos-delay="200">
-                State-of-the-art medical laboratory services delivering accurate, ISO-certified results for your health and peace of mind.
+            
+            <p class="text-lg md:text-xl mb-10 text-slate-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed" data-aos="fade-up" data-aos-delay="200">
+                From advanced laboratory diagnostics to blood banking and <strong>Virtual Consultations at Medcrux</strong>. We bring international standard healthcare closer to you.
             </p>
+            
             <div class="flex flex-col sm:flex-row justify-center gap-4" data-aos="fade-up" data-aos-delay="300">
-                <a href="contact.html" class="bg-white text-primary hover:bg-gray-50 px-8 py-4 rounded-full font-bold transition-all shadow-lg hover:shadow-xl hover:-translate-y-1">
+                <a href="contact.html" class="bg-primary hover:bg-secondary text-white px-8 py-4 rounded-full font-bold transition-all shadow-lg hover:shadow-blue-500/40 hover:-translate-y-1">
                     Book an Appointment
                 </a>
-                <a href="about.html" class="px-8 py-4 rounded-full font-bold transition-all border border-white/30 hover:bg-white/10 backdrop-blur-sm">
-                    Learn More
+                <a href="about.html" class="px-8 py-4 rounded-full font-bold transition-all border border-slate-300 dark:border-slate-600 text-slate-700 dark:text-white hover:bg-slate-100 dark:hover:bg-slate-800">
+                    Explore Services
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section class="py-24 bg-gray-50 dark:bg-slate-800">
+    <!-- Features Strip -->
+    <section class="py-12">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="bg-primary dark:bg-blue-900/50 rounded-3xl p-8 grid grid-cols-1 md:grid-cols-4 gap-8 text-white text-center shadow-2xl backdrop-blur-sm">
+                <div class="p-4" data-aos="zoom-in"><div class="text-4xl mb-3">⚡</div><h3 class="font-bold text-lg">Fast Results</h3><p class="text-sm opacity-80">24-hour turnaround</p></div>
+                <div class="p-4" data-aos="zoom-in" data-aos-delay="100"><div class="text-4xl mb-3">🧬</div><h3 class="font-bold text-lg">Advanced Tech</h3><p class="text-sm opacity-80">Modern diagnostics</p></div>
+                <div class="p-4" data-aos="zoom-in" data-aos-delay="200"><div class="text-4xl mb-3">👨‍⚕️</div><h3 class="font-bold text-lg">Expert Team</h3><p class="text-sm opacity-80">Qualified Doctors</p></div>
+                <div class="p-4" data-aos="zoom-in" data-aos-delay="300"><div class="text-4xl mb-3">🏠</div><h3 class="font-bold text-lg">Home Service</h3><p class="text-sm opacity-80">Sample collection</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Preview -->
+    <section class="py-20 bg-gray-50 dark:bg-slate-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-3xl md:text-4xl font-bold text-primary dark:text-secondary mb-4">Our Services</h2>
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary dark:text-secondary mb-4">Comprehensive Healthcare</h2>
                 <div class="h-1 w-20 bg-secondary mx-auto rounded-full"></div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                
-                <!-- Card 1: Hematology (UPDATED IMAGE: Blood Tubes) -->
-                <div class="group bg-white dark:bg-slate-900 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2" data-aos="fade-up" data-aos-delay="100">
-                    <div class="relative h-56 overflow-hidden">
-                        <img src="./images/hematology.webp" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Hematology Blood Samples">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <!-- Card 1 -->
+                <article class="group bg-white dark:bg-slate-900 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="h-48 overflow-hidden bg-gray-200">
+                        <img src="./images/hematology.webp" onerror="this.src='https://images.unsplash.com/photo-1615461168478-07e3148406a3?w=600'" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Blood Vials">
                     </div>
-                    <div class="p-8">
-                        <h3 class="text-xl font-bold text-primary dark:text-white mb-3">Hematology</h3>
-                        <p class="text-gray-600 dark:text-gray-400 leading-relaxed">Complete blood counts and blood disease diagnosis using advanced automated analyzers.</p>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-primary dark:text-white mb-2">Laboratory & Diagnostics</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Hematology, Microbiology, Chemical Pathology, and Genetics testing.</p>
+                        <a href="about.html" class="text-secondary font-bold text-sm hover:underline">Learn More →</a>
                     </div>
-                </div>
+                </article>
 
-                <!-- Card 2: Microbiology (UPDATED IMAGE: Petri Dishes) -->
-                <div class="group bg-white dark:bg-slate-900 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2" data-aos="fade-up" data-aos-delay="200">
-                    <div class="relative h-56 overflow-hidden">
-                        <img src="./images/microbiology.webp" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Microbiology Culture">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <!-- Card 2 -->
+                <article class="group bg-white dark:bg-slate-900 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="h-48 overflow-hidden bg-gray-200">
+                        <img src="https://images.unsplash.com/photo-1631815589968-fdb09a223b1e?w=600" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Doctor Consultation">
                     </div>
-                    <div class="p-8">
-                        <h3 class="text-xl font-bold text-primary dark:text-white mb-3">Microbiology</h3>
-                        <p class="text-gray-600 dark:text-gray-400 leading-relaxed">Identification of bacteria, viruses, and fungi with rapid sensitivity testing.</p>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-primary dark:text-white mb-2">Clinical Services</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">General medicine, minor surgeries, and specialized geriatric care.</p>
+                        <a href="about.html" class="text-secondary font-bold text-sm hover:underline">Learn More →</a>
                     </div>
-                </div>
+                </article>
 
-                <!-- Card 3: Checkup (Doctor/Stethoscope) -->
-                <div class="group bg-white dark:bg-slate-900 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2" data-aos="fade-up" data-aos-delay="300">
-                    <div class="relative h-56 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1631815589968-fdb09a223b1e?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Checkup">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <!-- Card 3 -->
+                <article class="group bg-white dark:bg-slate-900 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="h-48 overflow-hidden bg-gray-200">
+                        <img src="./images/virtual-consultation.webp" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Virtual Doctor">
                     </div>
-                    <div class="p-8">
-                        <h3 class="text-xl font-bold text-primary dark:text-white mb-3">General Checkup</h3>
-                        <p class="text-gray-600 dark:text-gray-400 leading-relaxed">Routine health screenings, wellness panels, and metabolic profiles.</p>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-primary dark:text-white mb-2">Virtual Consultation</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Consult with our expert doctors from the comfort of your home.</p>
+                        <a href="about.html" class="text-secondary font-bold text-sm hover:underline">Learn More →</a>
                     </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- "How It Works" Section -->
+    <section class="py-20 bg-white dark:bg-darkbg">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-slate-800 dark:text-white">Simple 3-Step Process</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center relative">
+                <div class="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-gray-100 dark:bg-slate-800 -z-10 transform -translate-y-1/2"></div>
+                <div class="bg-white dark:bg-slate-900 p-8 rounded-xl shadow-sm border border-gray-100 dark:border-slate-800"><div class="w-16 h-16 bg-blue-100 text-primary rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">1</div><h3 class="font-bold text-xl mb-2 dark:text-white">Book Appointment</h3><p class="text-sm text-gray-500">Contact us online or visit our Lekki/Ajah centers.</p></div>
+                <div class="bg-white dark:bg-slate-900 p-8 rounded-xl shadow-sm border border-gray-100 dark:border-slate-800"><div class="w-16 h-16 bg-blue-100 text-primary rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">2</div><h3 class="font-bold text-xl mb-2 dark:text-white">Sample Collection</h3><p class="text-sm text-gray-500">Walk in or request a home sample pick-up.</p></div>
+                <div class="bg-white dark:bg-slate-900 p-8 rounded-xl shadow-sm border border-gray-100 dark:border-slate-800"><div class="w-16 h-16 bg-blue-100 text-primary rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">3</div><h3 class="font-bold text-xl mb-2 dark:text-white">Fast Results</h3><p class="text-sm text-gray-500">Receive accurate results via email or hard copy.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-blue-50 dark:bg-slate-800/50">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-12 text-primary dark:text-secondary">What Our Patients Say</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white dark:bg-slate-900 p-8 rounded-2xl shadow-md text-left"><div class="flex text-yellow-400 mb-4">★★★★★</div><p class="text-gray-600 dark:text-gray-300 italic mb-4">"The home service was a lifesaver for my elderly mother. The phlebotomist was professional and gentle."</p><p class="font-bold text-slate-800 dark:text-white">- Chioma O.</p></div>
+                <div class="bg-white dark:bg-slate-900 p-8 rounded-2xl shadow-md text-left"><div class="flex text-yellow-400 mb-4">★★★★★</div><p class="text-gray-600 dark:text-gray-300 italic mb-4">"Best diagnostic center in Ajah. Very clean environment and I got my malaria test results in less than 2 hours."</p><p class="font-bold text-slate-800 dark:text-white">- Emmanuel A.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20 bg-white dark:bg-darkbg">
+        <div class="max-w-3xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-10 dark:text-white">Frequently Asked Questions</h2>
+            <div class="space-y-4">
+                <div class="border border-gray-200 dark:border-slate-700 rounded-lg overflow-hidden">
+                    <button class="faq-question w-full p-4 text-left flex justify-between items-center bg-gray-50 dark:bg-slate-800 hover:bg-gray-100 dark:hover:bg-slate-700 transition">
+                        <span class="font-semibold text-slate-800 dark:text-white">Do you offer home services?</span>
+                        <span class="faq-icon transition-transform">▼</span>
+                    </button>
+                    <div class="hidden p-4 bg-white dark:bg-slate-900 text-gray-600 dark:text-gray-400">Yes! We offer off-premise healthcare services. You can book a sample collection at your home or office in Lagos.</div>
+                </div>
+                <div class="border border-gray-200 dark:border-slate-700 rounded-lg overflow-hidden">
+                    <button class="faq-question w-full p-4 text-left flex justify-between items-center bg-gray-50 dark:bg-slate-800 hover:bg-gray-100 dark:hover:bg-slate-700 transition">
+                        <span class="font-semibold text-slate-800 dark:text-white">How long do results take?</span>
+                        <span class="faq-icon transition-transform">▼</span>
+                    </button>
+                    <div class="hidden p-4 bg-white dark:bg-slate-900 text-gray-600 dark:text-gray-400">Routine tests (Malaria, Typhoid, FBC) are usually ready within 2-4 hours. Specialized cultures may take 24-48 hours.</div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-slate-900 text-white py-12 border-t border-slate-800">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <h2 class="text-2xl font-bold mb-6">Medi<span class="text-secondary">Lab</span></h2>
-            <div class="flex justify-center gap-6 mb-8 text-slate-400">
-                <a href="#" class="hover:text-white transition">Privacy Policy</a>
-                <a href="#" class="hover:text-white transition">Terms of Service</a>
-                <a href="contact.html" class="hover:text-white transition">Support</a>
+    <footer class="bg-slate-900/80 backdrop-blur-xl text-white py-12 border-t border-slate-800 text-center relative z-10">
+        <div class="max-w-[95%] mx-auto px-4">
+            <div class="mb-8">
+                <img src="./images/logo-dark-mode.png" alt="Medcrux Logo" class="h-24 w-auto object-contain mx-auto">
             </div>
-            <p class="text-slate-500 text-sm">&copy; 2023 MediLab Diagnostics. All rights reserved.</p>
+            
+            <div class="flex flex-col md:flex-row gap-8 mb-8 text-sm text-slate-400 justify-center">
+                <div>
+                    <strong class="text-white block mb-1 uppercase tracking-wide">Ajah Branch</strong>
+                    No 1, Anu Street, Opp AP Filling Station,<br>Badore Road, Ajah
+                </div>
+                <div>
+                    <strong class="text-white block mb-1 uppercase tracking-wide">Lekki Branch</strong>
+                    No 17j Admiral Ayinla Way,<br>By Freedom Way, Lekki Phase 1
+                </div>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-4 mb-8 text-sm text-secondary font-medium">
+                <a href="mailto:Info@medcrux.com.ng" class="hover:text-white transition">Info@medcrux.com.ng</a>
+                <span>•</span>
+                <a href="mailto:Hello@medcrux.com.ng" class="hover:text-white transition">Hello@medcrux.com.ng</a>
+            </div>
+
+            <p class="text-slate-500 text-sm">&copy; <span id="current-year"></span> Medcrux. All rights reserved.</p>
         </div>
     </footer>
 
-    <!-- Scripts -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="script.js"></script>
 </body>

@@ -3,15 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us | MediLab</title>
+    <title>Contact Us | Medcrux</title>
     
-    <!-- Fonts -->
+    <link rel="icon" type="image/png" href="./images/logo-dark-mode.png">
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Animations CSS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -19,181 +16,188 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: '#0056b3',
-                        secondary: '#00a8cc',
-                        darkbg: '#0f172a',
+                        primary: '#0056b3', secondary: '#00a8cc', darkbg: '#020617',
                     },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    }
+                    fontFamily: { sans: ['Inter', 'sans-serif'] }
                 }
             }
         }
     </script>
-
-    <!-- PREVENT FLASHING: Run this before body loads -->
     <script>
         if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark');
-        }
+        } else { document.documentElement.classList.remove('dark'); }
     </script>
+    
+    <!-- Aurora Styles -->
+    <style>
+        @keyframes blob {
+            0% { transform: translate(0px, 0px) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+            100% { transform: translate(0px, 0px) scale(1); }
+        }
+        .animate-blob { animation: blob 7s infinite; }
+        .animation-delay-2000 { animation-delay: 2s; }
+    </style>
 </head>
-<body class="bg-gray-50 text-slate-800 dark:bg-darkbg dark:text-slate-200 transition-colors duration-300 font-sans flex flex-col min-h-screen">
+<body class="bg-gray-50 text-slate-800 dark:bg-darkbg dark:text-slate-200 transition-colors duration-300 font-sans flex flex-col min-h-screen relative">
 
-    <!-- Navbar -->
-    <nav class="sticky top-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-gray-100 dark:border-slate-800 transition-all">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <!-- Logo -->
-                <a href="index.html" class="text-2xl font-bold text-primary dark:text-secondary flex items-center gap-2">
-                    Medi<span class="text-secondary dark:text-white">Lab</span>
-                </a>
+    <!-- AURORA BACKGROUND -->
+    <div class="fixed inset-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
+        <div class="absolute top-0 left-1/4 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-[128px] opacity-20 dark:opacity-10 animate-blob"></div>
+        <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-teal-400 rounded-full mix-blend-multiply filter blur-[128px] opacity-20 dark:opacity-10 animate-blob animation-delay-2000"></div>
+    </div>
 
-                <!-- Desktop Menu -->
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="index.html" class="hover:text-primary dark:hover:text-secondary transition font-medium">Home</a>
-                    <a href="about.html" class="hover:text-primary dark:hover:text-secondary transition font-medium">About Us</a>
-                    <a href="contact.html" class="text-secondary font-medium">Contact</a>
-                    
-                    <!-- Desktop Theme Toggle -->
-                    <button class="theme-toggle p-2 rounded-full hover:bg-gray-100 dark:hover:bg-slate-800 transition focus:outline-none">
-                        <!-- Moon Icon (Default) -->
-                        <svg class="theme-moon w-6 h-6 text-slate-600 dark:text-slate-400" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
-                        <!-- Sun Icon (Hidden by default) -->
-                        <svg class="theme-sun w-6 h-6 text-yellow-400 hidden" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path></svg>
-                    </button>
-
-                    <a href="contact.html" class="bg-primary hover:bg-secondary text-white px-6 py-2.5 rounded-full font-semibold transition shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">Book Appointment</a>
-                </div>
-
-                <!-- Mobile Menu & Toggles -->
-                <div class="md:hidden flex items-center gap-4">
-                    <!-- Mobile Theme Toggle -->
-                    <button class="theme-toggle p-2 rounded-full hover:bg-gray-100 dark:hover:bg-slate-800 transition focus:outline-none">
-                        <!-- Moon -->
-                        <svg class="theme-moon w-6 h-6 text-slate-600 dark:text-slate-400" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
-                        <!-- Sun -->
-                        <svg class="theme-sun w-6 h-6 text-yellow-400 hidden" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path></svg>
-                    </button>
-                    
-                    <!-- Hamburger Icon -->
-                    <button id="mobile-menu-btn" class="text-2xl text-slate-700 dark:text-white">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-                    </button>
+    <!-- FLOATING NAVBAR -->
+    <div class="fixed top-4 left-0 right-0 z-50 flex justify-center px-4">
+        <nav class="w-full max-w-7xl bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl border border-white/40 dark:border-slate-700 rounded-full shadow-lg transition-all">
+            <div class="px-6 md:px-8">
+                <div class="flex justify-between items-center h-20">
+                    <a href="index.html" class="flex-shrink-0">
+                        <img src="./images/logo-light-mode.png" alt="Medcrux" class="h-14 w-auto block dark:hidden object-contain">
+                        <img src="./images/logo-dark-mode.png" alt="Medcrux" class="h-14 w-auto hidden dark:block object-contain">
+                    </a>
+                    <div class="hidden md:flex items-center space-x-6 lg:space-x-8">
+                        <a href="index.html" class="hover:text-primary dark:hover:text-secondary transition font-medium">Home</a>
+                        <a href="about.html" class="hover:text-primary dark:hover:text-secondary transition font-medium">Services</a>
+                        <a href="contact.html" class="text-secondary font-bold">Contact</a>
+                        <button class="theme-toggle p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition">
+                             <svg class="theme-moon w-5 h-5 text-slate-600 dark:text-slate-400" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                             <svg class="theme-sun w-5 h-5 text-yellow-400 hidden" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path></svg>
+                        </button>
+                        <a href="contact.html" class="bg-primary hover:bg-secondary text-white px-5 py-2.5 rounded-full font-bold transition shadow-lg">Book Now</a>
+                    </div>
+                    <div class="md:hidden flex items-center gap-3">
+                        <button class="theme-toggle p-2"><svg class="theme-moon w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg><svg class="theme-sun w-5 h-5 text-yellow-400 hidden" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"></path></svg></button>
+                        <button id="mobile-menu-btn" class="text-2xl text-primary dark:text-white">☰</button>
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-slate-900 border-t border-gray-100 dark:border-slate-800 absolute w-full left-0 shadow-xl">
-             <div class="px-4 pt-4 pb-6 space-y-2 flex flex-col items-center">
-                <a href="index.html" class="block w-full text-center py-3 font-medium text-slate-700 dark:text-slate-200">Home</a>
-                <a href="about.html" class="block w-full text-center py-3 font-medium text-slate-700 dark:text-slate-200">About Us</a>
-                <a href="contact.html" class="block w-full text-center py-3 text-secondary font-bold bg-gray-50 dark:bg-slate-800 rounded-lg">Contact</a>
+             <div id="mobile-menu" class="hidden md:hidden absolute top-24 left-0 w-full bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 rounded-2xl shadow-xl p-4 flex flex-col items-center space-y-3">
+                <a href="index.html" class="block w-full text-center py-2 hover:text-secondary">Home</a>
+                <a href="about.html" class="block w-full text-center py-2 hover:text-secondary">Services</a>
+                <a href="contact.html" class="block w-full text-center py-2 font-bold text-primary">Contact</a>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </div>
+
+    <!-- Padding for Fixed Nav -->
+    <div class="h-28"></div>
 
     <!-- Main Content -->
     <main class="flex-grow py-12 md:py-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12" data-aos="fade-up">
-                <h2 class="text-3xl md:text-5xl font-bold text-primary dark:text-secondary mb-4 transition-colors">Get in Touch</h2>
-                <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">Visit us for a diagnostic test or send us a message. We are here to help you.</p>
+                <h2 class="text-3xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">Get in Touch</h2>
+                <p class="text-lg text-slate-600 dark:text-gray-400 max-w-2xl mx-auto">Visit either of our branches or schedule a virtual consultation today.</p>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-3 rounded-3xl overflow-hidden shadow-2xl bg-white dark:bg-slate-900 transition-colors duration-300" data-aos="fade-up" data-aos-delay="200">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8" data-aos="fade-up" data-aos-delay="200">
                 
-                <!-- Contact Info (Left Side) -->
-                <div class="bg-gradient-to-br from-primary to-blue-700 p-10 text-white lg:col-span-1 flex flex-col justify-between relative overflow-hidden">
-                    <!-- Decorative Circle -->
-                    <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-white/10 rounded-full blur-2xl"></div>
-                    
-                    <div>
-                        <h3 class="text-2xl font-bold mb-8">Contact Info</h3>
+                <!-- Contact Info Column (Left) -->
+                <div class="lg:col-span-1 flex flex-col gap-6">
+                    <!-- Info Box -->
+                    <div class="bg-gradient-to-br from-primary to-blue-800 p-8 rounded-3xl text-white shadow-xl relative overflow-hidden">
+                        <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-white/10 rounded-full blur-2xl"></div>
                         
-                        <div class="space-y-8">
-                            <div class="flex items-start gap-4 group">
-                                <div class="w-10 h-10 rounded-lg bg-white/20 backdrop-blur-sm flex items-center justify-center text-xl group-hover:bg-white/30 transition">📍</div>
+                        <div class="space-y-8 relative z-10">
+                            <!-- Branch 1 -->
+                            <div class="flex items-start gap-4">
+                                <div class="w-8 h-8 bg-white/20 rounded flex items-center justify-center shrink-0">📍</div>
                                 <div>
-                                    <h4 class="font-bold text-sm uppercase tracking-wider mb-1 text-blue-100">Address</h4>
-                                    <p class="opacity-90 leading-snug">123 Medical Park Drive<br>Science City, SC 90210</p>
-                                </div>
-                            </div>
-                            
-                            <div class="flex items-start gap-4 group">
-                                <div class="w-10 h-10 rounded-lg bg-white/20 backdrop-blur-sm flex items-center justify-center text-xl group-hover:bg-white/30 transition">📞</div>
-                                <div>
-                                    <h4 class="font-bold text-sm uppercase tracking-wider mb-1 text-blue-100">Phone</h4>
-                                    <p class="opacity-90">+1 (555) 123-4567</p>
+                                    <h4 class="font-bold text-xs uppercase tracking-wider mb-1 text-blue-200">Ajah Branch</h4>
+                                    <p class="text-sm opacity-90 leading-snug">No 1, Anu Street, Opp AP Filling Station, Badore Road, Ajah</p>
                                 </div>
                             </div>
 
-                            <div class="flex items-start gap-4 group">
-                                <div class="w-10 h-10 rounded-lg bg-white/20 backdrop-blur-sm flex items-center justify-center text-xl group-hover:bg-white/30 transition">✉️</div>
+                            <!-- Branch 2 -->
+                            <div class="flex items-start gap-4">
+                                <div class="w-8 h-8 bg-white/20 rounded flex items-center justify-center shrink-0">📍</div>
                                 <div>
-                                    <h4 class="font-bold text-sm uppercase tracking-wider mb-1 text-blue-100">Email</h4>
-                                    <p class="opacity-90">help@medilab.com</p>
+                                    <h4 class="font-bold text-xs uppercase tracking-wider mb-1 text-blue-200">Lekki Branch</h4>
+                                    <p class="text-sm opacity-90 leading-snug">No 17j Admiral Ayinla Way, By Freedom Way, Lekki Phase 1</p>
+                                </div>
+                            </div>
+
+                            <!-- Phones -->
+                            <div class="flex items-start gap-4">
+                                <div class="w-8 h-8 bg-white/20 rounded flex items-center justify-center shrink-0">📞</div>
+                                <div>
+                                    <h4 class="font-bold text-xs uppercase tracking-wider mb-1 text-blue-200">Phone Numbers</h4>
+                                    <div class="text-sm opacity-90 grid grid-cols-1 gap-1">
+                                        <a href="tel:+2348065852838" class="hover:underline">+234 806 585 2838</a>
+                                        <a href="tel:+2349094822277" class="hover:underline">+234 909 482 2277</a>
+                                        <a href="tel:+2349127322326" class="hover:underline">+234 912 732 2326</a>
+                                        <a href="tel:+2349127512578" class="hover:underline">+234 912 751 2578</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Emails -->
+                            <div class="flex items-start gap-4">
+                                <div class="w-8 h-8 bg-white/20 rounded flex items-center justify-center shrink-0">✉️</div>
+                                <div>
+                                    <h4 class="font-bold text-xs uppercase tracking-wider mb-1 text-blue-200">Email</h4>
+                                    <a href="mailto:Info@medcrux.com.ng" class="block text-sm opacity-90 hover:underline">Info@medcrux.com.ng</a>
+                                    <a href="mailto:Hello@medcrux.com.ng" class="block text-sm opacity-90 hover:underline">Hello@medcrux.com.ng</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
-                    <!-- Social Links -->
-                    <div class="mt-10">
-                         <p class="text-sm text-blue-100 mb-3 font-semibold">Follow Us</p>
-                         <div class="flex gap-4">
-                             <a href="#" class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center hover:bg-white hover:text-primary transition">𝕏</a>
-                             <a href="#" class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center hover:bg-white hover:text-primary transition">f</a>
-                             <a href="#" class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center hover:bg-white hover:text-primary transition">in</a>
-                         </div>
+
+                    <!-- Map Embed -->
+                    <div class="rounded-3xl overflow-hidden shadow-lg h-64 border border-white/20">
+                        <!-- Defaulting to Ajah/Lekki region -->
+                        <iframe 
+                            width="100%" 
+                            height="100%" 
+                            style="border:0" 
+                            loading="lazy" 
+                            allowfullscreen 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.6!2d3.5!3d6.4!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMjYnMDguOSJOIDPCsDM1JzE2LjEiRQ!5e0!3m2!1sen!2sng!4v1638888888888">
+                        </iframe>
                     </div>
                 </div>
 
                 <!-- Contact Form (Right Side) -->
-                <div class="p-8 md:p-12 lg:col-span-2">
+                <div class="lg:col-span-2 bg-white/50 dark:bg-slate-900/50 backdrop-blur-md p-8 md:p-12 rounded-3xl border border-white/50 dark:border-slate-700 shadow-xl">
                     <form id="labForm" class="space-y-6">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <!-- Name -->
                             <div>
-                                <label for="from_name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Full Name</label>
-                                <input type="text" name="from_name" id="name" required class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all placeholder-gray-400 dark:placeholder-gray-500" placeholder="John Doe">
+                                <label class="block text-sm font-medium text-slate-700 dark:text-gray-300 mb-2">Full Name</label>
+                                <input type="text" name="from_name" required class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-slate-600 bg-white/80 dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary/50 outline-none transition-all placeholder-gray-400" placeholder="John Doe">
                             </div>
-                            <!-- Email -->
                             <div>
-                                <label for="from_email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Email Address</label>
-                                <input type="email" name="from_email" id="email" required class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all placeholder-gray-400 dark:placeholder-gray-500" placeholder="john@example.com">
+                                <label class="block text-sm font-medium text-slate-700 dark:text-gray-300 mb-2">Email Address</label>
+                                <input type="email" name="from_email" required class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-slate-600 bg-white/80 dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary/50 outline-none transition-all placeholder-gray-400" placeholder="john@example.com">
                             </div>
                         </div>
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <!-- Phone -->
                             <div>
-                                <label for="phone" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Phone Number</label>
-                                <input type="tel" name="phone" id="phone" class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all placeholder-gray-400 dark:placeholder-gray-500" placeholder="(555) 123-4567">
+                                <label class="block text-sm font-medium text-slate-700 dark:text-gray-300 mb-2">Phone Number</label>
+                                <input type="tel" name="phone" class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-slate-600 bg-white/80 dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary/50 outline-none transition-all placeholder-gray-400" placeholder="+234...">
                             </div>
-                            <!-- Service Type -->
                             <div>
-                                <label for="test_type" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Type of Test</label>
-                                <select name="test_type" id="test-type" required class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all">
+                                <label class="block text-sm font-medium text-slate-700 dark:text-gray-300 mb-2">Service Required</label>
+                                <select name="test_type" required class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-slate-600 bg-white/80 dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary/50 outline-none transition-all">
                                     <option value="" disabled selected>Select a service...</option>
-                                    <option value="hematology">Hematology</option>
-                                    <option value="microbiology">Microbiology</option>
-                                    <option value="checkup">General Checkup</option>
-                                    <option value="other">Other Inquiry</option>
+                                    <option value="Virtual Consultation">Virtual Consultation</option>
+                                    <option value="Home Service">Off-Premise (Home) Service</option>
+                                    <option value="Lab Test">Laboratory Test</option>
+                                    <option value="General Checkup">General Checkup</option>
+                                    <option value="Blood Banking">Blood Banking</option>
                                 </select>
                             </div>
                         </div>
 
-                        <!-- Message -->
                         <div>
-                            <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Message</label>
-                            <textarea name="message" id="message" rows="4" class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all resize-none placeholder-gray-400 dark:placeholder-gray-500" placeholder="Any specific requirements?"></textarea>
+                            <label class="block text-sm font-medium text-slate-700 dark:text-gray-300 mb-2">Message</label>
+                            <textarea name="message" rows="4" class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-slate-600 bg-white/80 dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary/50 outline-none transition-all resize-none placeholder-gray-400" placeholder="Describe your request..."></textarea>
                         </div>
 
-                        <button type="submit" class="w-full bg-primary hover:bg-secondary text-white font-bold py-4 rounded-xl transition-all duration-300 shadow-lg shadow-primary/30 transform hover:-translate-y-1 hover:shadow-xl">
+                        <button type="submit" class="w-full bg-primary hover:bg-secondary text-white font-bold py-4 rounded-xl transition-all duration-300 shadow-lg hover:-translate-y-1">
                             Send Request
                         </button>
                     </form>
@@ -203,21 +207,27 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-slate-900 text-white py-10 border-t border-slate-800 mt-auto">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <h2 class="text-2xl font-bold mb-4 flex justify-center items-center gap-2">
-                Medi<span class="text-secondary">Lab</span>
-            </h2>
-            <div class="flex justify-center gap-6 mb-6 text-sm text-slate-400">
-                <a href="#" class="hover:text-white transition">Privacy Policy</a>
-                <a href="#" class="hover:text-white transition">Terms of Service</a>
-                <a href="#" class="hover:text-white transition">Careers</a>
+    <footer class="bg-slate-900/80 backdrop-blur-xl text-white py-12 border-t border-slate-800 text-center relative z-10">
+        <div class="max-w-[95%] mx-auto px-4">
+            <div class="mb-8">
+                <img src="./images/logo-dark-mode.png" alt="Medcrux Logo" class="h-24 w-auto object-contain mx-auto">
             </div>
-            <p class="text-slate-500">&copy; 2023 MediLab Diagnostics. All rights reserved.</p>
+            
+            <div class="flex flex-col md:flex-row gap-8 mb-8 text-sm text-slate-400 justify-center">
+                <div>
+                    <strong class="text-white block mb-1 uppercase tracking-wide">Ajah Branch</strong>
+                    No 1, Anu Street, Opp AP Filling Station,<br>Badore Road, Ajah
+                </div>
+                <div>
+                    <strong class="text-white block mb-1 uppercase tracking-wide">Lekki Branch</strong>
+                    No 17j Admiral Ayinla Way,<br>By Freedom Way, Lekki Phase 1
+                </div>
+            </div>
+
+            <p class="text-slate-500 text-sm">&copy; <span id="current-year"></span> Medcrux. All rights reserved.</p>
         </div>
     </footer>
 
-    <!-- Animations Library -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script src="script.js"></script>
