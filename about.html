@@ -2,7 +2,9 @@
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- Added maximum-scale=1.0 to prevent layout shifting on load -->
+    
     <title>Services & About Us | Medcrux</title>
     
     <link rel="icon" type="image/png" href="./images/logo-dark-mode.png">
@@ -11,28 +13,16 @@
     <meta name="description" content="Learn about Medcrux services: Advanced Histopathology, Microbiology, Chemical Pathology, Geriatrics, and Home Care in Lagos. Experience precision at Medcrux.">
     <meta name="keywords" content="Medcrux Services, Medical Lab Services Lagos, Geriatric Care Nigeria, Blood Bank Ajah, Histopathology Lekki">
 
-    <!-- SCHEMA MARKUP (Department Specifics) -->
+    <!-- SCHEMA MARKUP -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "MedicalBusiness",
       "name": "Medcrux",
       "department": [
-        {
-          "@type": "MedicalSpecialty",
-          "name": "Hematology Department",
-          "description": "Blood analysis and disorder diagnosis at Medcrux."
-        },
-        {
-          "@type": "MedicalSpecialty",
-          "name": "Microbiology Lab",
-          "description": "Infection disease testing and antibiotic sensitivity."
-        },
-        {
-          "@type": "MedicalSpecialty",
-          "name": "Geriatric Care",
-          "description": "Specialized health services for the elderly."
-        }
+        { "@type": "MedicalSpecialty", "name": "Hematology Department", "description": "Blood analysis and disorder diagnosis at Medcrux." },
+        { "@type": "MedicalSpecialty", "name": "Microbiology Lab", "description": "Infection disease testing and antibiotic sensitivity." },
+        { "@type": "MedicalSpecialty", "name": "Geriatric Care", "description": "Specialized health services for the elderly." }
       ]
     }
     </script>
@@ -45,9 +35,7 @@
             darkMode: 'class',
             theme: {
                 extend: {
-                    colors: {
-                        primary: '#0056b3', secondary: '#00a8cc', darkbg: '#020617',
-                    },
+                    colors: { primary: '#0056b3', secondary: '#00a8cc', darkbg: '#020617' },
                     fontFamily: { sans: ['Inter', 'sans-serif'] }
                 }
             }
@@ -70,26 +58,32 @@
         .animate-blob { animation: blob 7s infinite; }
         .animation-delay-2000 { animation-delay: 2s; }
         .animation-delay-4000 { animation-delay: 4s; }
+        /* Prevent horizontal scroll globally */
+        body { overflow-x: hidden; width: 100%; }
     </style>
 </head>
-<body class="bg-gray-50 text-slate-800 dark:bg-darkbg dark:text-slate-200 transition-colors duration-300 font-sans flex flex-col min-h-screen relative">
+<body class="bg-gray-50 text-slate-800 dark:bg-darkbg dark:text-slate-200 transition-colors duration-300 font-sans flex flex-col min-h-screen relative overflow-x-hidden">
 
-    <!-- AURORA BACKGROUND -->
+    <!-- AURORA BACKGROUND (Strictly Contained) -->
     <div class="fixed inset-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
-        <div class="absolute top-0 left-1/4 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-[128px] opacity-20 dark:opacity-10 animate-blob"></div>
-        <div class="absolute top-0 right-1/4 w-96 h-96 bg-teal-400 rounded-full mix-blend-multiply filter blur-[128px] opacity-20 dark:opacity-10 animate-blob animation-delay-2000"></div>
-        <div class="absolute -bottom-32 left-1/3 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-[128px] opacity-20 dark:opacity-10 animate-blob animation-delay-4000"></div>
+        <div class="absolute top-0 left-1/4 w-64 md:w-96 h-64 md:h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-[80px] md:blur-[128px] opacity-20 dark:opacity-10 animate-blob"></div>
+        <div class="absolute top-0 right-1/4 w-64 md:w-96 h-64 md:h-96 bg-teal-400 rounded-full mix-blend-multiply filter blur-[80px] md:blur-[128px] opacity-20 dark:opacity-10 animate-blob animation-delay-2000"></div>
+        <div class="absolute -bottom-32 left-1/3 w-64 md:w-96 h-64 md:h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-[80px] md:blur-[128px] opacity-20 dark:opacity-10 animate-blob animation-delay-4000"></div>
     </div>
 
     <!-- FLOATING NAVBAR -->
-    <div class="fixed top-4 left-0 right-0 z-50 flex justify-center px-4">
+    <div class="fixed top-4 left-0 right-0 z-50 flex justify-center px-4 w-full">
         <nav class="w-full max-w-7xl bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl border border-white/40 dark:border-slate-700 rounded-full shadow-lg transition-all">
             <div class="px-6 md:px-8">
-                <div class="flex justify-between items-center h-20">
+                <div class="flex justify-between items-center h-16 md:h-20"> <!-- Smaller height on mobile -->
+                    
+                    <!-- Logo (Responsive Size Fixed) -->
                     <a href="index.html" class="flex-shrink-0">
-                        <img src="./images/logo-light-mode.png" alt="Medcrux" class="h-14 w-auto block dark:hidden object-contain">
-                        <img src="./images/logo-dark-mode.png" alt="Medcrux" class="h-14 w-auto hidden dark:block object-contain">
+                        <img src="./images/logo-light-mode.png" alt="Medcrux" class="h-10 md:h-14 w-auto block dark:hidden object-contain">
+                        <img src="./images/logo-dark-mode.png" alt="Medcrux" class="h-10 md:h-14 w-auto hidden dark:block object-contain">
                     </a>
+
+                    <!-- Desktop Menu -->
                     <div class="hidden md:flex items-center space-x-6 lg:space-x-8">
                         <a href="index.html" class="hover:text-primary dark:hover:text-secondary transition font-medium text-sm lg:text-base">Home</a>
                         <a href="about.html" class="text-secondary font-bold text-sm lg:text-base">Services</a>
@@ -100,13 +94,15 @@
                         </button>
                         <a href="contact.html" class="bg-primary hover:bg-secondary text-white px-5 py-2.5 rounded-full font-bold transition shadow-lg hover:shadow-blue-500/30 text-sm lg:text-base">Book Now</a>
                     </div>
+
+                    <!-- Mobile Toggle -->
                     <div class="md:hidden flex items-center gap-3">
                         <button class="theme-toggle p-2"><svg class="theme-moon w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg><svg class="theme-sun w-5 h-5 text-yellow-400 hidden" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"></path></svg></button>
                         <button id="mobile-menu-btn" class="text-2xl text-primary dark:text-white">☰</button>
                     </div>
                 </div>
             </div>
-             <div id="mobile-menu" class="hidden md:hidden absolute top-24 left-0 w-full bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 rounded-2xl shadow-xl p-4 flex flex-col items-center space-y-3">
+             <div id="mobile-menu" class="hidden md:hidden absolute top-20 left-0 w-full bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 rounded-2xl shadow-xl p-4 flex flex-col items-center space-y-3">
                 <a href="index.html" class="block w-full text-center py-2 hover:text-secondary">Home</a>
                 <a href="about.html" class="block w-full text-center py-2 font-bold text-primary">Services</a>
                 <a href="contact.html" class="block w-full text-center py-2 hover:text-secondary">Contact</a>
@@ -118,16 +114,16 @@
     <div class="h-28"></div>
 
     <!-- Header -->
-    <div class="text-center py-16 px-4" data-aos="fade-down">
-        <h1 class="text-4xl md:text-5xl font-bold text-primary dark:text-white mb-4">Who We Are</h1>
-        
+    <div class="text-center py-12 md:py-16 px-4" data-aos="fade-down">
+        <h1 class="text-3xl md:text-5xl font-bold text-primary dark:text-white mb-4">Who We Are</h1>
+        <p class="text-lg text-gray-600 dark:text-gray-400">Excellence in Healthcare.</p>
     </div>
 
-    <main class="flex-grow">
+    <main class="flex-grow w-full max-w-full overflow-hidden">
         <!-- Mission Section -->
         <section class="py-12 border-b border-gray-100 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
                     <div class="order-2 lg:order-1" data-aos="fade-right">
                         <span class="text-secondary font-bold tracking-wider uppercase text-sm mb-2 block">Our Mission</span>
                         <h2 class="text-3xl md:text-4xl font-bold text-slate-800 dark:text-white mb-6">Expertise & Compassion</h2>
@@ -136,101 +132,103 @@
                         </p>
                     </div>
                     <div class="order-1 lg:order-2" data-aos="fade-left">
-                        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=800" class="rounded-3xl shadow-2xl w-full object-cover h-[400px]" alt="Medcrux Team">
+                        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=800" class="rounded-3xl shadow-2xl w-full object-cover h-[300px] md:h-[400px]" alt="Medcrux Team">
                     </div>
                 </div>
             </div>
         </section>
 
-    <section class="py-20">
-    <div class="max-w-7xl mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center mb-16 dark:text-white" data-aos="fade-up">Medical Departments at Medcrux</h2>
-        
-        <div class="space-y-12">
-            
-            <!-- 1. Clinical Services (Teal Theme) -->
-            <div class="bg-teal-50/80 dark:bg-slate-800/80 backdrop-blur-md p-8 md:p-10 rounded-3xl border border-teal-100 dark:border-slate-700 shadow-lg" data-aos="fade-up">
-                <div class="flex flex-col md:flex-row gap-6 items-start">
-                    <div class="md:w-1/3">
-                        <span class="bg-teal-100 text-teal-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">Patient Care</span>
-                        <h3 class="text-2xl font-bold text-slate-800 dark:text-white mt-2">Clinical Services</h3>
-                        <p class="text-slate-600 dark:text-gray-400 mt-2 text-sm">Expert medical management and surgical interventions by Medcrux specialists.</p>
+        <!-- SERVICES SECTION (Fixed Overflow Issues) -->
+        <section class="py-16 md:py-20 w-full">
+            <div class="max-w-7xl mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center mb-12 dark:text-white" data-aos="fade-up">Medical Departments at Medcrux</h2>
+                
+                <div class="space-y-12">
+                    
+                    <!-- 1. Clinical Services -->
+                    <div class="bg-teal-50/80 dark:bg-slate-800/80 backdrop-blur-md p-6 md:p-10 rounded-3xl border border-teal-100 dark:border-slate-700 shadow-lg" data-aos="fade-up">
+                        <div class="flex flex-col md:flex-row gap-6 items-start">
+                            <div class="md:w-1/3">
+                                <span class="bg-teal-100 text-teal-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">Patient Care</span>
+                                <h3 class="text-2xl font-bold text-slate-800 dark:text-white mt-2">Clinical Services</h3>
+                                <p class="text-slate-600 dark:text-gray-400 mt-2 text-sm">Expert medical management and surgical interventions by Medcrux specialists.</p>
+                            </div>
+                            <div class="md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div class="flex items-center gap-3"><span class="text-teal-500">✚</span> <span class="text-slate-700 dark:text-gray-300">General Medicine</span></div>
+                                <div class="flex items-center gap-3"><span class="text-teal-500">✚</span> <span class="text-slate-700 dark:text-gray-300">Surgery</span></div>
+                                <div class="flex items-center gap-3"><span class="text-teal-500">✚</span> <span class="text-slate-700 dark:text-gray-300">Geriatrics</span></div>
+                                <div class="flex items-center gap-3"><span class="text-teal-500">✚</span> <span class="text-slate-700 dark:text-gray-300">Pediatrics</span></div>
+                                <div class="flex items-center gap-3"><span class="text-teal-500">✚</span> <span class="text-slate-700 dark:text-gray-300">Obstetrics & Gynaecology</span></div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div class="flex items-center gap-3"><span class="text-teal-500">✚</span> <span class="text-slate-700 dark:text-gray-300">General Medicine</span></div>
-                        <div class="flex items-center gap-3"><span class="text-teal-500">✚</span> <span class="text-slate-700 dark:text-gray-300">Surgery</span></div>
-                        <div class="flex items-center gap-3"><span class="text-teal-500">✚</span> <span class="text-slate-700 dark:text-gray-300">Geriatrics </span></div>
-                        <div class="flex items-center gap-3"><span class="text-teal-500">✚</span> <span class="text-slate-700 dark:text-gray-300">Pediatrics</span></div>
-                        <div class="flex items-center gap-3"><span class="text-teal-500">✚</span> <span class="text-slate-700 dark:text-gray-300">Obstetrics & Gynaecology (O&G)</span></div>
+
+                    <!-- 2. Laboratory Services -->
+                    <div class="bg-blue-50/80 dark:bg-slate-800/80 backdrop-blur-md p-6 md:p-10 rounded-3xl border border-blue-100 dark:border-slate-700 shadow-lg" data-aos="fade-up">
+                        <div class="flex flex-col md:flex-row gap-6 items-start">
+                            <div class="md:w-1/3">
+                                <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">Pathology</span>
+                                <h3 class="text-2xl font-bold text-slate-800 dark:text-white mt-2">Laboratory Services</h3>
+                                <p class="text-slate-600 dark:text-gray-400 mt-2 text-sm">Precision analysis using state-of-the-art equipment at the Medcrux Lab.</p>
+                            </div>
+                            <div class="md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div class="flex items-center gap-3"><span class="text-blue-500">🔬</span> <span class="text-slate-700 dark:text-gray-300">Hematology</span></div>
+                                <div class="flex items-center gap-3"><span class="text-blue-500">🔬</span> <span class="text-slate-700 dark:text-gray-300">Chemical Pathology</span></div>
+                                <div class="flex items-center gap-3"><span class="text-blue-500">🔬</span> <span class="text-slate-700 dark:text-gray-300">Microbiology</span></div>
+                                <div class="flex items-center gap-3"><span class="text-blue-500">🔬</span> <span class="text-slate-700 dark:text-gray-300">Histopathology</span></div>
+                                <div class="flex items-center gap-3"><span class="text-blue-500">🔬</span> <span class="text-slate-700 dark:text-gray-300">Genetics</span></div>
+                            </div>
+                        </div>
                     </div>
+
+                    <!-- 3. Diagnostics & Blood Bank (Split Grid) -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <!-- Diagnostics -->
+                        <div class="bg-purple-50/80 dark:bg-slate-800/80 backdrop-blur-md p-6 md:p-8 rounded-3xl border border-purple-100 dark:border-slate-700 shadow-lg" data-aos="fade-right">
+                            <span class="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">Imaging</span>
+                            <h3 class="text-xl font-bold text-slate-800 dark:text-white mt-3 mb-4">Diagnostic Services</h3>
+                            <ul class="space-y-3">
+                                <li class="flex items-center gap-3 text-slate-700 dark:text-gray-300">
+                                    <span class="text-purple-500 bg-purple-100 rounded p-1">⚡</span> ECG (Electrocardiogram)
+                                </li>
+                                <li class="flex items-center gap-3 text-slate-700 dark:text-gray-300">
+                                    <span class="text-purple-500 bg-purple-100 rounded p-1">💓</span> Echocardiography
+                                </li>
+                                <li class="flex items-center gap-3 text-slate-700 dark:text-gray-300">
+                                    <span class="text-purple-500 bg-purple-100 rounded p-1">📸</span> Medical Imaging
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Blood Bank -->
+                        <div class="bg-red-50/80 dark:bg-slate-800/80 backdrop-blur-md p-6 md:p-8 rounded-3xl border border-red-100 dark:border-slate-700 shadow-lg" data-aos="fade-left">
+                            <span class="bg-red-100 text-red-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">Life Saving</span>
+                            <h3 class="text-xl font-bold text-slate-800 dark:text-white mt-3 mb-4">Blood Banking</h3>
+                            <ul class="space-y-3">
+                                <li class="flex items-center gap-3 text-slate-700 dark:text-gray-300">
+                                    <span class="text-red-500 bg-red-100 rounded p-1">🩸</span> Blood Storage
+                                </li>
+                                <li class="flex items-center gap-3 text-slate-700 dark:text-gray-300">
+                                    <span class="text-red-500 bg-red-100 rounded p-1">🚑</span> Transfusion Services
+                                </li>
+                                <li class="flex items-center gap-3 text-slate-700 dark:text-gray-300">
+                                    <span class="text-red-500 bg-red-100 rounded p-1">❄️</span> Blood Product Management
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
                 </div>
             </div>
-
-            <!-- 2. Laboratory Services (Blue Theme) -->
-            <div class="bg-blue-50/80 dark:bg-slate-800/80 backdrop-blur-md p-8 md:p-10 rounded-3xl border border-blue-100 dark:border-slate-700 shadow-lg" data-aos="fade-up">
-                <div class="flex flex-col md:flex-row gap-6 items-start">
-                    <div class="md:w-1/3">
-                        <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">Pathology</span>
-                        <h3 class="text-2xl font-bold text-slate-800 dark:text-white mt-2">Laboratory Services</h3>
-                        <p class="text-slate-600 dark:text-gray-400 mt-2 text-sm">Precision analysis using state-of-the-art equipment at the Medcrux Lab.</p>
-                    </div>
-                    <div class="md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div class="flex items-center gap-3"><span class="text-blue-500">🔬</span> <span class="text-slate-700 dark:text-gray-300">Hematology</span></div>
-                        <div class="flex items-center gap-3"><span class="text-blue-500">🔬</span> <span class="text-slate-700 dark:text-gray-300">Chemical Pathology</span></div>
-                        <div class="flex items-center gap-3"><span class="text-blue-500">🔬</span> <span class="text-slate-700 dark:text-gray-300">Microbiology</span></div>
-                        <div class="flex items-center gap-3"><span class="text-blue-500">🔬</span> <span class="text-slate-700 dark:text-gray-300">Histopathology</span></div>
-                        <div class="flex items-center gap-3"><span class="text-blue-500">🔬</span> <span class="text-slate-700 dark:text-gray-300">Genetics</span></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 3. Diagnostics & Blood Bank (Split Grid) -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Diagnostics -->
-                <div class="bg-purple-50/80 dark:bg-slate-800/80 backdrop-blur-md p-8 rounded-3xl border border-purple-100 dark:border-slate-700 shadow-lg" data-aos="fade-right">
-                    <span class="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">Imaging</span>
-                    <h3 class="text-xl font-bold text-slate-800 dark:text-white mt-3 mb-4">Diagnostic Services</h3>
-                    <ul class="space-y-3">
-                        <li class="flex items-center gap-3 text-slate-700 dark:text-gray-300">
-                            <span class="text-purple-500 bg-purple-100 rounded p-1">⚡</span> ECG (Electrocardiogram)
-                        </li>
-                        <li class="flex items-center gap-3 text-slate-700 dark:text-gray-300">
-                            <span class="text-purple-500 bg-purple-100 rounded p-1">💓</span> Echocardiography
-                        </li>
-                        <li class="flex items-center gap-3 text-slate-700 dark:text-gray-300">
-                            <span class="text-purple-500 bg-purple-100 rounded p-1">📸</span> Medical Imaging
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Blood Bank -->
-                <div class="bg-red-50/80 dark:bg-slate-800/80 backdrop-blur-md p-8 rounded-3xl border border-red-100 dark:border-slate-700 shadow-lg" data-aos="fade-left">
-                    <span class="bg-red-100 text-red-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">Life Saving</span>
-                    <h3 class="text-xl font-bold text-slate-800 dark:text-white mt-3 mb-4">Blood Banking</h3>
-                    <ul class="space-y-3">
-                        <li class="flex items-center gap-3 text-slate-700 dark:text-gray-300">
-                            <span class="text-red-500 bg-red-100 rounded p-1">🩸</span> Blood Storage
-                        </li>
-                        <li class="flex items-center gap-3 text-slate-700 dark:text-gray-300">
-                            <span class="text-red-500 bg-red-100 rounded p-1">🚑</span> Transfusion Services
-                        </li>
-                        <li class="flex items-center gap-3 text-slate-700 dark:text-gray-300">
-                            <span class="text-red-500 bg-red-100 rounded p-1">❄️</span> Blood Product Management
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
+        </section>
     </main>
 
     <!-- Footer -->
     <footer class="bg-slate-900/80 backdrop-blur-xl text-white py-12 border-t border-slate-800 text-center relative z-10">
         <div class="max-w-[95%] mx-auto px-4">
             <div class="mb-8">
-                <img src="./images/logo-dark-mode.png" alt="Medcrux Logo" class="h-24 w-auto object-contain mx-auto">
+                <!-- LOGO CONSTRAINT ADDED HERE: max-w-[70%] on mobile -->
+                <img src="./images/logo-dark-mode.png" alt="Medcrux Logo" class="h-16 md:h-24 w-auto object-contain mx-auto max-w-[70%]">
             </div>
             
             <div class="flex flex-col md:flex-row gap-8 mb-8 text-sm text-slate-400 justify-center">
