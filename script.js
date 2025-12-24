@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const contactForm = document.getElementById('labForm');
     if (contactForm && typeof emailjs !== 'undefined') {
         // Initialize EmailJS with your Public Key
-        emailjs.init({ publicKey: "3xnbMw4bjV4WKIhhG" }); 
+        emailjs.init({ publicKey: "hArCsnHP7EgWWKS6I" }); 
 
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.classList.add('opacity-75', 'cursor-not-allowed');
 
             // Send Form
-            emailjs.sendForm('service_woqi7ih', 'template_2z541er', this)
+            emailjs.sendForm('service_lswdwnj', 'template_i60xoec', this)
                 .then(() => {
                     // Success State
                     btn.textContent = 'Message Sent!';
