@@ -120,8 +120,31 @@
     <!-- Padding for Fixed Nav -->
     <div class="h-28"></div>
 
-    <!-- Hero Section -->
+   <!-- Hero Section -->
     <section class="relative min-h-[85vh] flex items-center justify-center text-center overflow-hidden">
+        
+        <!-- VIDEO BACKGROUND -->
+        <div class="absolute inset-0 z-0">
+            <!-- Overlay Gradient (Keeps text readable) -->
+            <div class="absolute inset-0 bg-gradient-to-r from-blue-900/90 to-teal-800/80 z-10"></div>
+            
+            <!-- The Video Player -->
+            <!-- Replace './images/hero-video.mp4' with your actual file name -->
+            <!-- Replace './images/fallback.jpg' with your previous static image -->
+            <video 
+                autoplay 
+                muted 
+                loop 
+                playsinline 
+                poster="./images/fallback.jpg" 
+                class="w-full h-full object-cover"
+            >
+                <source src="./images/hero-video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        
+        <!-- Content (Stays exactly the same) -->
         <div class="relative z-20 px-4 max-w-5xl mx-auto">
             <div data-aos="fade-down" class="inline-flex items-center gap-2 bg-blue-50/50 dark:bg-slate-800/50 backdrop-blur-md border border-blue-100 dark:border-slate-700 px-4 py-2 rounded-full mb-8 shadow-sm">
                 <span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
